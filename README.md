@@ -1,61 +1,104 @@
-
-
 Contact Management System
 Project Overview
-The Contact Management System is a Java-based application designed to efficiently manage and organize contacts. This project enables users to add, update, view, and delete contacts while maintaining a clean and user-friendly interface.
+The Contact Management System is a Java-based application designed to manage and organize contact information effectively. It allows users to perform CRUD (Create, Read, Update, Delete) operations on contact data, stored in a MongoDB database, ensuring a flexible and scalable backend.
 
 Features
-Add Contacts: Add new contacts with essential details such as name, phone number, and email.
-View Contacts: Display a list of all saved contacts with their details.
-Update Contacts: Modify existing contact details.
-Delete Contacts: Remove unnecessary or outdated contacts.
-Search Functionality: Search for a specific contact by name or other details.
+Add Contacts: Save new contacts with details like Name, Phone, and Email.
+View Contacts: Retrieve and display a list of all saved contacts.
+Update Contacts: Modify details of existing contacts.
+Delete Contacts: Remove outdated or unnecessary contacts.
+Search Contacts: Search for specific contacts based on provided details.
 Technologies Used
 Programming Language: Java
-Database: MySQL (or your chosen database)
-IDE: IntelliJ IDEA/Eclipse/NetBeans
+Editor: Visual Studio Code
+Database: MongoDB
+Libraries/Frameworks:
+MongoDB Java Driver
+JSON Parsing Library (if required)
 Version Control: Git
+Prerequisites
+Ensure the following tools are installed:
+
+Java Development Kit (JDK) (version 8 or higher)
+VS Code with the Java Extension Pack
+MongoDB Community Server (running locally or accessible remotely)
+Git
 Setup and Installation
 Clone the repository to your local machine:
+
 bash
 Copy code
 git clone https://github.com/ashwaniprajapati049/Contact-management.git  
-Open the project in your preferred Java IDE.
-Configure the database connection in the db_config file:
-Set the database URL, username, and password.
+Open the project in VS Code:
+
+Navigate to the folder using File > Open Folder.
+Install the MongoDB Java Driver:
+
+Add the dependency to your pom.xml (if using Maven):
+xml
+Copy code
+<dependency>  
+    <groupId>org.mongodb</groupId>  
+    <artifactId>mongodb-driver-sync</artifactId>  
+    <version>4.9.1</version>  
+</dependency>  
+If not using Maven, download the JAR from MongoDB Java Driver and add it to your classpath.
+Configure MongoDB connection in the application (e.g., DatabaseConnection.java):
+
 java
 Copy code
-String DB_URL = "jdbc:mysql://localhost:3306/contact_management";  
-String USER = "your_username";  
-String PASSWORD = "your_password";  
-Run the schema.sql file to create the necessary database tables.
-Execute the main program to start using the application.
-Database Schema
-The application uses a single table named contacts with the following fields:
+import com.mongodb.MongoClient;  
+import com.mongodb.client.MongoDatabase;  
 
-id (INT, Primary Key, Auto Increment)
-name (VARCHAR)
-phone (VARCHAR)
-email (VARCHAR)
-Usage
-Add a Contact: Use the application interface to provide details for a new contact.
-Edit a Contact: Select a contact from the list and update its details.
-Search Contacts: Use the search bar to find contacts by name or other attributes.
-Delete a Contact: Select a contact and remove it from the database.
+public class DatabaseConnection {  
+    public static MongoDatabase getDatabase() {  
+        MongoClient mongoClient = new MongoClient("localhost", 27017);  
+        return mongoClient.getDatabase("contact_management");  
+    }  
+}  
+Create the contacts collection in MongoDB:
+
+Open the MongoDB shell or use a GUI client like MongoDB Compass:
+bash
+Copy code
+use contact_management  
+db.createCollection("contacts")  
+Run the project:
+
+Use the terminal in VS Code to compile and run:
+bash
+Copy code
+javac Main.java  
+java Main  
+Directory Structure
+css
+Copy code
+Contact-management/  
+├── src/  
+│   ├── Main.java  
+│   ├── DatabaseConnection.java  
+│   ├── Contact.java  
+│   └── ContactManager.java  
+├── README.md  
+├── pom.xml (if using Maven)  
+└── .gitignore  
+Usage Instructions
+Run the Program: Start the application by running Main.java.
+Perform CRUD Operations: Follow the prompts to:
+Add, view, update, or delete contacts.
+Search for specific contacts using criteria like name.
+Exit Application: Use the appropriate option to exit the program.
 Contributing
-Contributions are welcome! If you'd like to contribute, follow these steps:
+Contributions are welcome! If you'd like to contribute:
 
 Fork the repository.
-Create a feature branch (git checkout -b feature-name).
-Commit your changes (git commit -m 'Add a feature').
-Push to the branch (git push origin feature-name).
+Create a branch (git checkout -b feature-name).
+Commit your changes (git commit -m "Add feature").
+Push to your branch (git push origin feature-name).
 Open a pull request.
+Contact
+Author: Ashwani Prajapati
+Email: prajapatiashwani62@gmail.com
+GitHub: Ashwani Prajapati
 License
 This project is licensed under the MIT License.
-
-Contact
-For any queries or support, please contact:
-
-Name: Ashwani Prajapati
-Email: prajapatiashwani62@gmail.com
-GitHub Profile: Ashwani Prajapati
