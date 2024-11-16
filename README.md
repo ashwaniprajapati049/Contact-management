@@ -1,100 +1,105 @@
 Contact Management System
 Project Overview
-The Contact Management System is a Java-based application designed to manage and organize contact information effectively. It allows users to perform CRUD (Create, Read, Update, Delete) operations on contact data, stored in a MongoDB database, ensuring a flexible and scalable backend.
+The Contact Management System is a full-stack application built with Node.js, MongoDB, and React. It enables users to manage contacts, offering features like creating, updating, viewing, and deleting contact records.
 
 Features
-Add Contacts: Save new contacts with details like Name, Phone, and Email.
-View Contacts: Retrieve and display a list of all saved contacts.
-Update Contacts: Modify details of existing contacts.
-Delete Contacts: Remove outdated or unnecessary contacts.
-Search Contacts: Search for specific contacts based on provided details.
+Add Contacts: Users can add new contacts with details like name, email, and phone number.
+View Contacts: Displays all saved contacts in a tabular format.
+Update Contacts: Allows modification of existing contact details.
+Delete Contacts: Removes unwanted or outdated contact records.
+Responsive UI: Optimized for various devices using React and Tailwind CSS.
 Technologies Used
-Programming Language: Java
-Editor: Visual Studio Code
-Database: MongoDB
-Libraries/Frameworks:
-MongoDB Java Driver
-JSON Parsing Library (if required)
-Version Control: Git
+Backend
+Node.js: Backend framework for creating RESTful APIs.
+Express.js: Framework for building server-side logic.
+MongoDB: NoSQL database for storing contact data.
+Frontend
+React: JavaScript library for building user interfaces.
+Vite: Build tool for faster development.
+Tailwind CSS: Utility-first CSS framework for styling.
 Prerequisites
-Ensure the following tools are installed:
+Ensure you have the following installed:
 
-Java Development Kit (JDK) (version 8 or higher)
-VS Code with the Java Extension Pack
-MongoDB Community Server (running locally or accessible remotely)
-Git
+Node.js (version 14 or higher)
+MongoDB (local or remote instance)
+npm or yarn for package management
 Setup and Installation
-Clone the repository to your local machine:
+Backend
+Navigate to the backend folder:
 
 bash
 Copy code
-git clone https://github.com/ashwaniprajapati049/Contact-management.git  
-Open the project in VS Code:
+cd contact-management/backend  
+Install dependencies:
 
-Navigate to the folder using File > Open Folder.
-Install the MongoDB Java Driver:
-
-Add the dependency to your pom.xml (if using Maven):
-xml
-Copy code
-<dependency>  
-    <groupId>org.mongodb</groupId>  
-    <artifactId>mongodb-driver-sync</artifactId>  
-    <version>4.9.1</version>  
-</dependency>  
-If not using Maven, download the JAR from MongoDB Java Driver and add it to your classpath.
-Configure MongoDB connection in the application (e.g., DatabaseConnection.java):
-
-java
-Copy code
-import com.mongodb.MongoClient;  
-import com.mongodb.client.MongoDatabase;  
-
-public class DatabaseConnection {  
-    public static MongoDatabase getDatabase() {  
-        MongoClient mongoClient = new MongoClient("localhost", 27017);  
-        return mongoClient.getDatabase("contact_management");  
-    }  
-}  
-Create the contacts collection in MongoDB:
-
-Open the MongoDB shell or use a GUI client like MongoDB Compass:
 bash
 Copy code
-use contact_management  
-db.createCollection("contacts")  
-Run the project:
+npm install  
+Configure the database:
 
-Use the terminal in VS Code to compile and run:
+Open server.js and update the MongoDB connection string if needed.
+Start the server:
+
 bash
 Copy code
-javac Main.java  
-java Main  
-Directory Structure
-css
+node server.js  
+The backend will run on http://localhost:5000 by default.
+
+Frontend
+Navigate to the frontend folder:
+
+bash
 Copy code
-Contact-management/  
-├── src/  
-│   ├── Main.java  
-│   ├── DatabaseConnection.java  
-│   ├── Contact.java  
-│   └── ContactManager.java  
+cd contact-management/frontend/my-contact-app  
+Install dependencies:
+
+bash
+Copy code
+npm install  
+Start the development server:
+
+bash
+Copy code
+npm run dev  
+The frontend will run on http://localhost:5173 by default.
+
+Project Structure
+lua
+Copy code
+contact-management/  
+├── backend/  
+│   ├── models/  
+│   │   └── contactModel.js  
+│   ├── routes/  
+│   │   └── contactRoutes.js  
+│   ├── package.json  
+│   └── server.js  
+├── frontend/  
+│   ├── my-contact-app/  
+│   │   ├── src/  
+│   │   │   ├── components/  
+│   │   │   │   ├── ContactForm.jsx  
+│   │   │   │   └── ContactsTable.jsx  
+│   │   │   ├── App.jsx  
+│   │   │   ├── main.jsx  
+│   │   │   └── index.css  
+│   │   ├── package.json  
+│   │   └── vite.config.js  
 ├── README.md  
-├── pom.xml (if using Maven)  
-└── .gitignore  
-Usage Instructions
-Run the Program: Start the application by running Main.java.
-Perform CRUD Operations: Follow the prompts to:
-Add, view, update, or delete contacts.
-Search for specific contacts using criteria like name.
-Exit Application: Use the appropriate option to exit the program.
+How to Use
+Run the Backend: Follow the backend setup steps and ensure the server is running.
+Run the Frontend: Follow the frontend setup steps and open the application in your browser.
+Interact with the App:
+Add new contacts using the form.
+View all contacts in the table.
+Update or delete contacts as needed.
 Contributing
-Contributions are welcome! If you'd like to contribute:
+Contributions are welcome!
 
 Fork the repository.
-Create a branch (git checkout -b feature-name).
+Create a feature branch (git checkout -b feature-name).
 Commit your changes (git commit -m "Add feature").
-Push to your branch (git push origin feature-name).
+Push the branch (git push origin feature-name).
 Open a pull request.
 Contact
 Author: Ashwani Prajapati
@@ -102,3 +107,4 @@ Email: prajapatiashwani62@gmail.com
 GitHub: Ashwani Prajapati
 License
 This project is licensed under the MIT License.
+
